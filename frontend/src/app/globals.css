@@ -1,0 +1,42 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #f7f8fa;
+  color: #1a1a2e;
+  line-height: 1.6;
+}
+
+main {
+  min-height: calc(100vh - 64px - 60px);
+}
+
+.site-footer {
+  background: #1a1a2e;
+  color: rgba(255, 255, 255, 0.7);
+  text-align: center;
+  padding: 1.25rem;
+  font-size: 0.875rem;
+}
+
+a {
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.2;
+}
