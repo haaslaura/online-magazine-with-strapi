@@ -33,7 +33,9 @@
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": ["images"]
+      "allowedTypes": [
+        "images"
+      ]
     },
     "author": {
       "type": "relation",
@@ -46,6 +48,9 @@
       "relation": "manyToOne",
       "target": "api::category.category",
       "inversedBy": "articles"
+    },
+    "featured": {
+      "type": "boolean"
     }
   }
 }
