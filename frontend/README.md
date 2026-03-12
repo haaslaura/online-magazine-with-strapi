@@ -16,6 +16,22 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## Environment
+
+Set `NEXT_PUBLIC_STRAPI_URL` to the base URL of your Strapi instance.
+
+Examples:
+
+```bash
+# .env.local
+NEXT_PUBLIC_STRAPI_URL=http://localhost:1337
+
+# .env.production
+NEXT_PUBLIC_STRAPI_URL=https://cms.example.com
+```
+
+The frontend already uses this variable for API requests, and `next.config.ts` now uses it for remote image authorization as well.
+
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
