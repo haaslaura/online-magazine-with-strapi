@@ -54,7 +54,7 @@ npm install
 npm run dev
 ```
 
-The magazine frontend will be available at **http://localhost:3000**.
+The magazine frontend will be available at **http://localhost:3001**.
 
 ## Pages
 
