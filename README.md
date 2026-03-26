@@ -1,6 +1,14 @@
 # Online Magazine with CMS
 
-An online magazine powered by **Strapi** (headless CMS backend) and **Next.js 16** with the App Router (frontend).
+An online magazine powered by **Strapi** (headless CMS backend) and **Next.js 16** with the App Router (frontend). The project is based on an existing magazine, as part of a learning programme for Next and Strapi. Online version : https://lappel-detre-magazine.laura-haas.dev/
+
+## Tech Stack
+
+- Strapi (headless CMS)
+- Next.js 16 (App Router)
+- Tailwind CSS (to be installed)
+- PostgreSQL in Docker (to be installed)
+- Currently hosted on a VPS lovingly configured by hand & Strapi admin panel accessible only via IP whitelist
 
 ## Project Structure
 
@@ -54,7 +62,7 @@ npm install
 npm run dev
 ```
 
-The magazine frontend will be available at **http://localhost:3001**.
+The magazine frontend will be available at **http://localhost:3000**.
 
 ## Pages
 
@@ -76,7 +84,14 @@ cd backend && npm run develop
 cd frontend && npm run dev
 ```
 
-## Tech Stack
+## 🔮 Incoming :
 
-- **Backend**: [Strapi 5](https://strapi.io/) – headless CMS with REST API, SQLite (default)
-- **Frontend**: [Next.js 16](https://nextjs.org/) – React framework with App Router, Server Components, ISR
+- Installing and configuring Tailwind CSS
+- Configuring PostgreSQL (Docker) for Strapi
+- Adding styling to the frontend
+- Adding editorial content via Strapi
+
+## 📬 Contact
+
+This projet is for training and it's a work in progress 🚀
+Feel free to reach out via [LinkedIn](https://www.linkedin.com/in/laurahaas-developpement/) if you have any questions or feedback!

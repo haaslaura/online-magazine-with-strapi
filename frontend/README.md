@@ -1,52 +1,67 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Frontend – Next.js app
 
-## Getting Started
+This folder contains the **Next.js 16** frontend for the "Online Magazine with CMS" project. It consumes content from the Strapi backend and renders the online magazine.
 
-First, run the development server:
+Online magazine: https://lappel-detre-magazine.laura-haas.dev/
+
+For a high-level view of the whole stack, see the root README.
+
+## Tech Stack (frontend)
+
+- Next.js 16 with the App Router
+- React
+- Tailwind CSS (to be installed)
+- Fetching content from the Strapi backend via the public REST API
+
+## Getting started
+
+From the project root:
 
 ```bash
+cd frontend
+cp .env.example .env.local
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then open http://localhost:3000 in your browser.
 
-## Environment
+## Environment variables
 
-Set `NEXT_PUBLIC_STRAPI_URL` to the base URL of your Strapi instance.
+The frontend expects a single environment variable pointing to your Strapi instance:
+
+```bash
+NEXT_PUBLIC_STRAPI_URL=http://localhost:1337
+```
 
 Examples:
 
 ```bash
-# .env.local
+# .env.local (development)
 NEXT_PUBLIC_STRAPI_URL=http://localhost:1337
 
-# .env.production
-NEXT_PUBLIC_STRAPI_URL=https://cms.example.com
+# .env.production (deployment)
+NEXT_PUBLIC_STRAPI_URL=https://strapi.your-domain.com
 ```
 
-The frontend already uses this variable for API requests, and `next.config.ts` now uses it for remote image authorization as well.
+This variable is used in `src/lib/strapi.ts` for API requests and in `next.config.ts` for remote image configuration.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## NPM scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `npm run dev` – start the Next.js development server with hot reload.
+- `npm run build` – create an optimized production build.
+- `npm run start` – start the production server (after a build).
 
-## Learn More
+## Pages
 
-To learn more about Next.js, take a look at the following resources:
+The main routes mirror those described in the root README:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `/` – home page, latest articles grid.
+- `/articles/[slug]` – full article page.
+- `/categories/[slug]` – list of articles filtered by category.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🔮 Incoming (frontend)
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Installing and configuring Tailwind CSS.
+- Applying a custom design system to the magazine pages.
+- Iterating on layout and typography once more content is available from Strapi.
