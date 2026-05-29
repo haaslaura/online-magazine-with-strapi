@@ -1,7 +1,6 @@
 import { getArticles } from '@/lib/strapi';
 import ArticleCard from '@/components/ArticleCard';
 import styles from './page.module.css';
-import { error } from 'console';
 
 export const revalidate = 60;
 
@@ -17,12 +16,21 @@ export default async function HomePage() {
     return (
         <div className={styles.container}>
             <section className={styles.hero}>
-                <h1 className={styles.heroTitle}>Online Magazine</h1>
-                <p className={styles.heroSubtitle}>Discover the latest articles, stories, and insights.</p>
+                <span className="eyebrow">Pour une culture du vivant</span>
+                <h1 className={styles.heroTitle}>L&apos;Appel d&apos;Être magazine</h1>
+                <p className={styles.heroSubtitle}>
+                    L&apos;Appel d&apos;être est est un magazine en ligne consacré au vivant, à la biodiversité et à recréer du lien avec la nature.
+                </p>
             </section>
 
             <section className={styles.section}>
-                <h2 className={styles.sectionTitle}>Latest Articles</h2>
+                <div className="section-heading">
+                    <h2 className={styles.sectionTitle}>Derniers articles</h2>
+                    <p>
+                        Une grille d&apos;articles pensee pour mettre en avant les categories, les auteurs et la
+                        hierarchie des contenus sans surcharger l&apos;interface.
+                    </p>
+                </div>
                 {articles.length > 0 ? (
                     <div className={styles.grid}>
                         {articles.map((article) => (

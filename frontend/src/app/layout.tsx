@@ -1,11 +1,23 @@
 import type { Metadata } from 'next';
+import { Lato, Playfair_Display } from 'next/font/google';
 import Navbar from '@/components/Navbar';
 import { getCategories } from '@/lib/strapi';
 import './globals.css';
 
+const bodyFont = Lato({
+    subsets: ['latin'],
+    weight: ['400', '700', '900'],
+    variable: '--font-sans',
+});
+
+const displayFont = Playfair_Display({
+    subsets: ['latin'],
+    variable: '--font-display',
+});
+
 export const metadata: Metadata = {
-    title: 'Online Magazine',
-    description: 'Your go-to source for articles, news, and stories',
+    title: "L'Appel d'être magazine | Pour une culture du vivant",
+    description: "L'Appel d'être est est un magazine en ligne consacré au vivant, à la biodiversité et à recréer du lien avec la nature.",
 };
 
 export default async function RootLayout({
@@ -23,11 +35,13 @@ export default async function RootLayout({
 
     return (
         <html lang="fr">
-            <body>
+            <body className={`${bodyFont.variable} ${displayFont.variable}`}>
                 <Navbar categories={categories} />
-                <main>{children}</main>
+                <main className="page-shell">{children}</main>
                 <footer className="site-footer">
-                    <p>© {new Date().getFullYear()} Online Magazine. Powered by Strapi &amp; Next.js</p>
+                    <div className="content-container">
+                        <p>© {new Date().getFullYear()} L'Appel d'Être, est un projet du collectif Les Œuvres Vives. Site réalisé par Laura Haas.</p>
+                    </div>
                 </footer>
             </body>
         </html>

@@ -10,8 +10,23 @@ For a high-level view of the whole stack, see the root README.
 
 - Next.js 16 with the App Router
 - React
-- Tailwind CSS (to be installed)
+- Tailwind CSS 4 imported from the global stylesheet
 - Fetching content from the Strapi backend via the public REST API
+
+## Source of truth
+
+The frontend design system is intentionally centralized.
+
+- The main source of truth for visual tokens is `src/app/globals.css`.
+- Colors, spacing, radii, shadows, content widths, transitions, and shared utility classes live there as CSS custom properties and global primitives.
+- Global typography is wired from `src/app/layout.tsx`, which registers the display and body fonts used across the app.
+- Component-level CSS modules should consume those tokens instead of reintroducing new hard-coded values unless a local exception is justified.
+
+In practice:
+
+- Update `src/app/globals.css` first when changing the visual language of the product.
+- Update `src/app/layout.tsx` when changing global font choices or app-wide shell structure.
+- Keep page and component modules aligned with those decisions rather than diverging from them locally.
 
 ## Getting started
 
@@ -60,8 +75,8 @@ The main routes mirror those described in the root README:
 - `/articles/[slug]` – full article page.
 - `/categories/[slug]` – list of articles filtered by category.
 
-## 🔮 Incoming (frontend)
+## Design system status
 
-- Installing and configuring Tailwind CSS.
-- Applying a custom design system to the magazine pages.
-- Iterating on layout and typography once more content is available from Strapi.
+- A shared editorial design system is already in place for the main frontend routes.
+- The current foundation is meant to evolve from `src/app/globals.css`, not from scattered per-page overrides.
+- Future UI primitives should reuse the existing tokens and utility classes before introducing new patterns.

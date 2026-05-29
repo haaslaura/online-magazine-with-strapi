@@ -1,4 +1,4 @@
-import type { StrapiResponse, Article, Category, Author } from '@/types/strapi';
+import type { StrapiResponse, Article, Category } from '@/types/strapi';
 
 const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
 
