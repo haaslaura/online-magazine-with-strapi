@@ -20,25 +20,122 @@
 .nav {
     width: min(100% - 2rem, var(--content-width));
     margin: 0 auto;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    height: var(--header-height);
-    gap: 2rem;
+    padding: 0.85rem 0 1rem;
+    display: grid;
+    gap: 0.85rem;
+}
+
+.topRow {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.75rem;
 }
 
 .logo {
     font-family: var(--font-display, Georgia, serif);
-    font-size: 1.5rem;
+    font-size: 1.35rem;
     font-weight: 700;
     color: #fff7f0;
     text-decoration: none;
     letter-spacing: -0.04em;
-    white-space: nowrap;
+    line-height: 1;
 }
 
 .logo:hover {
     color: var(--color-brand-lime);
+}
+
+.quickLinks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.utilityLink,
+.searchButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.75rem;
+    padding: 0.65rem 1rem;
+    border-radius: var(--radius-pill);
+    text-decoration: none;
+    font-size: 0.86rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    transition:
+        background var(--transition-fast),
+        color var(--transition-fast),
+        border-color var(--transition-fast),
+        transform var(--transition-fast),
+        box-shadow var(--transition-fast);
+}
+
+.supportLink {
+    background: var(--color-brand-lime);
+    color: var(--color-accent-strong);
+    box-shadow: 0 10px 24px rgba(231, 250, 2, 0.18);
+}
+
+.supportLink:hover {
+    background: #f3ff6b;
+}
+
+.instagramLink {
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.instagramLink:hover,
+.searchButton:hover {
+    background: rgba(255, 255, 255, 0.14);
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.24);
+}
+
+.searchForm {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.5rem;
+}
+
+.searchInput {
+    min-width: 0;
+    min-height: 2.75rem;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-pill);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font: inherit;
+}
+
+.searchInput::placeholder {
+    color: rgba(255, 255, 255, 0.72);
+}
+
+.searchInput::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+}
+
+.searchButton {
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+}
+
+.srOnly {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
 }
 
 .links {
@@ -81,12 +178,26 @@
     transform: translateY(-1px);
 }
 
-@media (max-width: 768px) {
+@media (min-width: 768px) {
     .nav {
         gap: 1rem;
     }
 
+    .topRow {
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: center;
+    }
+
     .logo {
-        font-size: 1.2rem;
+        font-size: 1.55rem;
+        white-space: nowrap;
+    }
+
+    .searchForm {
+        max-width: 32rem;
+    }
+
+    .links {
+        gap: 0.45rem;
     }
 }

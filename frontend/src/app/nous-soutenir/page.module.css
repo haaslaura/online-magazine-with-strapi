@@ -1,0 +1,68 @@
+.container {
+    width: min(100% - 2rem, var(--content-width));
+    margin: 0 auto;
+    padding: 1.5rem 0 0;
+}
+
+.hero {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 1.75rem;
+}
+
+.title {
+    margin: 0;
+    font-size: clamp(2.2rem, 8vw, 4.5rem);
+    color: var(--color-text);
+}
+
+.lead {
+    max-width: 46rem;
+    color: var(--color-text-muted);
+    font-size: 1.05rem;
+}
+
+.grid {
+    display: grid;
+    gap: 1rem;
+}
+
+.card {
+    padding: 1.5rem;
+}
+
+.cardTitle {
+    margin: 0 0 0.75rem;
+    font-size: clamp(1.5rem, 5vw, 2rem);
+}
+
+.actions {
+    margin-top: 1.5rem;
+}
+
+.backLink {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.75rem;
+    padding: 0.65rem 1rem;
+    border-radius: var(--radius-pill);
+    background: var(--color-accent-strong);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.backLink:hover {
+    background: var(--color-accent);
+}
+
+@media (min-width: 768px) {
+    .container {
+        padding-top: 2rem;
+    }
+
+    .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}

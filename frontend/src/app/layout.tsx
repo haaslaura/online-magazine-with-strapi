@@ -40,7 +40,10 @@ export default async function RootLayout({
                 <main className="page-shell">{children}</main>
                 <footer className="site-footer">
                     <div className="content-container">
-                        <p>© {new Date().getFullYear()} L'Appel d'Être, est un projet du collectif Les Œuvres Vives. Site réalisé par Laura Haas.</p>
+                        <p>
+                            © {new Date().getFullYear()} L&apos;Appel d&apos;Être, est un projet du collectif Les
+                            Œuvres Vives. Site réalisé par Laura Haas.
+                        </p>
                     </div>
                 </footer>
             </body>
