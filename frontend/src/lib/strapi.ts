@@ -67,6 +67,18 @@ export async function getArticlesByCategory(
     });
 }
 
+export function getCategoryHref(slug: string): string {
+    return `/${slug}`;
+}
+
+export function getArticleHref(article: Pick<Article, 'slug' | 'category'>): string {
+    if (!article.category?.slug) {
+        return '/';
+    }
+
+    return `${getCategoryHref(article.category.slug)}/${article.slug}`;
+}
+
 export function getStrapiImageUrl(url: string | null | undefined): string {
     if (!url) return '';
     if (url.startsWith('http')) return url;

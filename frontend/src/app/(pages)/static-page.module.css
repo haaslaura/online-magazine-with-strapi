@@ -7,7 +7,7 @@
 .hero {
     display: grid;
     gap: 1rem;
-    margin-bottom: 1.75rem;
+    margin-bottom: 2rem;
 }
 
 .title {
@@ -36,25 +36,46 @@
     font-size: clamp(1.5rem, 5vw, 2rem);
 }
 
+.copy {
+    color: var(--color-text-muted);
+}
+
 .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
     margin-top: 1.5rem;
 }
 
-.backLink {
+.button,
+.link {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     min-height: 2.75rem;
     padding: 0.65rem 1rem;
     border-radius: var(--radius-pill);
-    background: var(--color-accent-strong);
-    color: #fff;
     text-decoration: none;
     font-weight: 700;
 }
 
-.backLink:hover {
+.button {
+    background: var(--color-accent-strong);
+    color: #fff;
+}
+
+.button:hover {
     background: var(--color-accent);
+}
+
+.link {
+    color: var(--color-accent-strong);
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid var(--color-border);
+}
+
+.link:hover {
+    color: var(--color-accent);
 }
 
 @media (min-width: 768px) {

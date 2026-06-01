@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import type { Category } from '@/types/strapi';
+import { getCategoryHref } from '@/lib/strapi';
 import styles from './Navbar.module.css';
 
 interface NavbarProps {
@@ -25,10 +26,10 @@ export default function Navbar({ categories }: NavbarProps) {
 
                     <div className={styles.quickLinks}>
                         <Link
-                            href="/nous-soutenir"
+                            href="/a-propos"
                             className={`${styles.utilityLink} ${styles.supportLink}`}
                         >
-                            Nous soutenir
+                            A propos
                         </Link>
                         <a
                             href={instagramHref}
@@ -80,7 +81,7 @@ export default function Navbar({ categories }: NavbarProps) {
                     {categories.map((cat) => (
                         <li key={cat.id}>
                             <Link
-                                href={`/categories/${cat.slug}`}
+                                href={getCategoryHref(cat.slug)}
                                 className={styles.link}
                             >
                                 {cat.name}

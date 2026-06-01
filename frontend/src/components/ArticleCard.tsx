@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import type { Article } from '@/types/strapi';
-import { getStrapiImageUrl } from '@/lib/strapi';
+import { getArticleHref, getCategoryHref, getStrapiImageUrl } from '@/lib/strapi';
 import styles from './ArticleCard.module.css';
 
 interface ArticleCardProps {
@@ -11,12 +11,13 @@ interface ArticleCardProps {
 export default function ArticleCard({ article }: ArticleCardProps) {
     const coverUrl = getStrapiImageUrl(article.cover?.formats?.medium?.url || article.cover?.url);
     const blurCoverUrl = getStrapiImageUrl(article.cover?.formats?.thumbnail?.url || article.cover?.url);
+    const articleHref = getArticleHref(article);
 
     return (
         <article className={styles.card}>
             {coverUrl && (
                 <Link
-                    href={`/articles/${article.slug}`}
+                    href={articleHref}
                     className={styles.imageLink}
                 >
                     <Image
@@ -33,14 +34,14 @@ export default function ArticleCard({ article }: ArticleCardProps) {
             <div className={styles.content}>
                 {article.category && (
                     <Link
-                        href={`/categories/${article.category.slug}`}
+                        href={getCategoryHref(article.category.slug)}
                         className={styles.category}
                     >
                         {article.category.name}
                     </Link>
                 )}
                 <h2 className={styles.title}>
-                    <Link href={`/articles/${article.slug}`}>{article.title}</Link>
+                    <Link href={articleHref}>{article.title}</Link>
                 </h2>
                 <p className={styles.excerpt}>{article.excerpt}</p>
                 <div className={styles.meta}>

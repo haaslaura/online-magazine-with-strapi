@@ -13,7 +13,7 @@ For a high-level view of the whole stack, see the root README.
 - Tailwind CSS 4 imported from the global stylesheet
 - Fetching content from the Strapi backend via the public REST API
 
-## Source of truth
+## Design patern: source of truth
 
 The frontend design system is intentionally centralized.
 
@@ -67,13 +67,53 @@ This variable is used in `src/lib/strapi.ts` for API requests and in `next.confi
 - `npm run build` – create an optimized production build.
 - `npm run start` – start the production server (after a build).
 
-## Pages
+## App Router organization
 
-The main routes mirror those described in the root README:
+The frontend is now organized around two route groups:
 
-- `/` – home page, latest articles grid.
-- `/articles/[slug]` – full article page.
-- `/categories/[slug]` – list of articles filtered by category.
+- `(editorial)` contains the public magazine routes.
+- `(pages)` contains standalone informational pages with their own page compositions.
+
+These group names are only filesystem helpers and do not appear in the URL.
+
+Current structure:
+
+```text
+src/app/
+	layout.tsx
+	globals.css
+	not-found.tsx
+	(editorial)/
+		page.tsx
+		[category]/
+			page.tsx
+			[slug]/
+				page.tsx
+	(pages)/
+		a-propos/page.tsx
+		espace-professionnel/page.tsx
+		mentions-legales/page.tsx
+		confidentialite/page.tsx
+```
+
+## Routes
+
+- `/` – home page, latest articles grid and search entry point.
+- `/[category]` – editorial landing page for one category.
+- `/[category]/[slug]` – article detail page nested under its category.
+- `/a-propos` – editorial presentation page.
+- `/espace-professionnel` – professional / partnership page.
+- `/mentions-legales` – legal notice page.
+- `/confidentialite` – privacy page.
+- `404` – custom not found page handled by `src/app/not-found.tsx`.
+
+Important routing constraint:
+
+- Category slugs live at the top level. They must not collide with reserved static routes such as `a-propos`, `espace-professionnel`, `mentions-legales`, or `confidentialite`.
+
+Removed routes:
+
+- The previous `/articles/[slug]`, `/categories/[slug]`, and `/nous-soutenir` routes have been removed from the App Router.
 
 ## Design system status
 

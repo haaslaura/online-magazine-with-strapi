@@ -28,16 +28,17 @@ export default async function HomePage({ searchParams }: HomePageProps) {
         });
         articles = res.data ?? [];
     } catch (error) {
-        console.error("Error fetching articles:", error);
+        console.error('Error fetching articles:', error);
     }
 
     return (
         <div className={styles.container}>
             <section className={styles.hero}>
                 <span className="eyebrow">Pour une culture du vivant</span>
-                <h1 className={styles.heroTitle}>L&apos;Appel d&apos;Être magazine</h1>
+                <h1 className={styles.heroTitle}>L&apos;Appel d&apos;Etre magazine</h1>
                 <p className={styles.heroSubtitle}>
-                    L&apos;Appel d&apos;être est est un magazine en ligne consacré au vivant, à la biodiversité et à recréer du lien avec la nature.
+                    L&apos;Appel d&apos;etre est est un magazine en ligne consacre au vivant, a la biodiversite et a
+                    recreer du lien avec la nature.
                 </p>
             </section>
 
@@ -47,7 +48,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
                     <p>
                         {hasQuery
                             ? 'Consultez les articles qui correspondent a votre recherche, avec une lecture pensee d abord pour le mobile.'
-                            : 'Une grille d&apos;articles pensee pour mettre en avant les categories, les auteurs et la hierarchie des contenus sans surcharger l&apos;interface.'}
+                            : 'Une grille d articles pensee pour mettre en avant les categories, les auteurs et la hierarchie des contenus sans surcharger l interface.'}
                     </p>
                 </div>
                 {articles.length > 0 ? (

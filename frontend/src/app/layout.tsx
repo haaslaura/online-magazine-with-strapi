@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { Lato, Playfair_Display } from 'next/font/google';
 import Navbar from '@/components/Navbar';
 import { getCategories } from '@/lib/strapi';
@@ -39,10 +40,19 @@ export default async function RootLayout({
                 <Navbar categories={categories} />
                 <main className="page-shell">{children}</main>
                 <footer className="site-footer">
-                    <div className="content-container">
+                    <div className="content-container site-footer-inner">
+                        <nav
+                            className="footer-links"
+                            aria-label="Liens secondaires"
+                        >
+                            <Link href="/a-propos">A propos</Link>
+                            <Link href="/espace-professionnel">Espace professionnel</Link>
+                            <Link href="/mentions-legales">Mentions legales</Link>
+                            <Link href="/confidentialite">Confidentialite</Link>
+                        </nav>
                         <p>
                             © {new Date().getFullYear()} L&apos;Appel d&apos;Être, est un projet du collectif Les
-                            Œuvres Vives. Site réalisé par Laura Haas.
+                            Œuvres Vives. Site realise par Laura Haas.
                         </p>
                     </div>
                 </footer>
