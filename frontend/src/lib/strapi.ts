@@ -1,6 +1,7 @@
 import type { StrapiResponse, Article, Category } from '@/types/strapi';
 
 const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
+const isDevelopment = process.env.NODE_ENV === 'development';
 
 async function fetchAPI<T>(endpoint: string, params: Record<string, string> = {}): Promise<T> {
     const searchParams = new URLSearchParams(params);
@@ -9,8 +10,10 @@ async function fetchAPI<T>(endpoint: string, params: Record<string, string> = {}
 
     const res = await fetch(url, {
         headers: { 'Content-Type': 'application/json' },
-        next: { revalidate: 60 },
+        ...(isDevelopment ? { cache: 'no-store' as const } : { next: { revalidate: 60 } }),
     });
+
+    console.log(`Fetching ${url} - Status: ${res.status}`);
 
     if (!res.ok) {
         throw new Error(`Failed to fetch ${url}: ${res.status} ${res.statusText}`);
